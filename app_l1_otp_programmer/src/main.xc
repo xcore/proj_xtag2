@@ -30,9 +30,9 @@ char serial[] = "XXXXXXXXXXXXXXXX";
 int main() {
     timer t;
     unsigned int data[1];
-    Options opts;
     int i, j;
     unsigned rdata;
+    Options opts;
 
     InitOptions(opts);
     opts.differential_mode = 0;

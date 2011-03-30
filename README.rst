@@ -21,8 +21,8 @@ To Do
 =====
 
 * Test
-* Make otp programmer work and put it in Makefile
 * Factor out XTAG2.xn into module_xtag2
+* Sort otp.h out - it should not be in this repo
 
 Firmware Overview
 =================
@@ -36,11 +36,19 @@ Known Issues
 * OTP needs otp.h and libotp
 
 Required Repositories
-================
+=====================
 
-* module_xud  https://www.xmos.com/download/public/USB-Library-and-HID-Example(1.6).zip
 * xcommon git\@github.com:xcore/xcommon.git
 * sc_jtag git\@github.com:xcore/sc_jtag.git
+* module_xud  https://www.xmos.com/download/public/USB-Library-and-HID-Example(1.6).zip
+
+The last of the three is not a repo that is controlled under git, but this
+should be downloaded from the XMOS website and placed next to the other
+repos before doing::
+
+   xmake clean && xmake all
+
+In the proj_xtag2 directory. This should build all.
 
 Support
 =======

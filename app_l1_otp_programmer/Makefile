@@ -18,3 +18,4 @@ USED_MODULES =
 all: $(BIN_DIR)/$(APP_NAME).xe
 	@echo Build Complete
 
+clean: clean_common

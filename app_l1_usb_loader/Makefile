@@ -1,4 +1,4 @@
-TARGET = XTAG2.xn
+TARGET = L1_XTAG
 
 APP_NAME = l1_usb_loader.xe
 

@@ -31,7 +31,7 @@ that run on it: the boot laoder and the debugger.
 Known Issues
 ============
 
-* None
+* Does not build at present as it relies on an XUD module.
 
 Required Repositories
 ================

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://www.xmos.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
+  <Type>Board</Type>
+
+  <Declarations>
+    <Declaration>core stdcore[1]</Declaration>
+  </Declarations>
+
+  <Nodes>
+    <Node id="0" Type="XS1-L1A-TQ128" oscillator="13Mhz" systemfrequency="400MHz" referencefrequency="100MHz">
+      <Core Number="0" Reference="stdcore[0]"/>
+    </Node>
+  </Nodes>
+
+  <Links>
+  </Links>
+
+  <Packages>
+    <Package id="0" Type="XS1-L1A-LQ64">
+      <Component NodeId="0" InPackage="0"/>
+    </Package>
+  </Packages>
+
+
+  <JTAGChain>
+     <JTAGDevice Nodeid="0"/>
+  </JTAGChain>
+
+</Network>
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://www.xmos.com"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
+  <Type>Device</Type>
+  <Name>XS1-L2A-QF124</Name>
+
+  <Declarations>
+    <Declaration>core stdcore[1]</Declaration>
+  </Declarations>
+
+  <Nodes>
+    <Node Id="0" Type="XS1-L1A" RoutingId="0x8000">
+      <Core Number="0" Reference="stdcore[0]">
+        <Port Location="XS1_PORT_1A" Name="PORT_SPI_MISO"/>
+        <Port Location="XS1_PORT_1B" Name="PORT_SPI_SS"/>
+        <Port Location="XS1_PORT_1C" Name="PORT_SPI_CLK"/>
+        <Port Location="XS1_PORT_1D" Name="PORT_SPI_MOSI"/>
+      </Core>
+    </Node>
+    <Node Id="1" Type="device:RoW">
+      <Service id="RoW" proto="restOfWorld( chanend c )">
+        <Chanend identifier="c" end="0x8000:1"/>
+      </Service>
+    </Node>
+  </Nodes>
+
+  <Links>
+    <!-- Initial delay only, other delay in source code -->
+    <Link Encoding="2wire" Delays="40,40" Flags="SOD">
+      <LinkEndpoint NodeId="0" Link="2"/>
+      <LinkEndpoint NodeId="1" RoutingId="0x0" Chanend="0"/>
+    </Link>
+  </Links>
+
+  <Packages>
+    <Package ID="0" Type="XS1-L1A-TQ128">
+      <Component NodeId="0" InPackage="0"/>
+    </Package>
+  </Packages>
+
+  <JTAGChain>
+     <JTAGDevice NodeId="0"/>
+  </JTAGChain>
+ 
+</Network>
+

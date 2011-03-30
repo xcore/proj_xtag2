@@ -5,7 +5,7 @@ XTAG2
 
 :Status:  Feature complete
 
-:Maintainer:  
+:Maintainer:  https://github.com/mattfyles
 
 :Description:  XTAG2 software
 

@@ -2,9 +2,11 @@ TARGET = XTAG2
 
 APP_NAME = l1_jtag
 
-XCC_FLAGS = -Xmapper --image-base -Xmapper 0x10400 -Xmapper --show-report -D G1 -DSPDIF -O2 -g -Xmapper --map -Xmapper MAPFILE -Wall -D UIFM_MODE=2 -D USB_CORE=0 -Xmapper -fsubword-select -Wno-timing -v
+XCC_FLAGS = -D G1 -O2 -g -Wall -D UIFM_MODE=2 -D USB_CORE=0 -fsubword-select -Wno-timing
 
-USED_MODULES = module_usb_shared module_jtag_master module_xcore_debug
+XCC_MAP_FLAGS = -g -Xmapper --image-base -Xmapper 0x10400 -Xmapper --show-report -Xmapper --map -Xmapper MAPFILE -Wno-timing
+
+USED_MODULES = module_usb_shared module_jtag_master module_xcore_debug module_xud
 
 
 # Use the latest 1v* version of module_xcommon

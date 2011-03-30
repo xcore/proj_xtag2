@@ -40,7 +40,7 @@
 # This variable should contain a space separated list of all
 # the directories containing buildable applications (usually
 # prefixed with the app_ prefix)
-BUILD_SUBDIRS = app_l1_usb_loader app_l1_jtag app_l1_otp_programmer
+BUILD_SUBDIRS = app_l1_usb_loader app_l1_jtag  # app_l1_otp_programmer
 
 # This variable should contain a space separated list of all
 # the directories containing buildable plugins (usually

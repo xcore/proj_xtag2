@@ -20,7 +20,9 @@ Key Features
 To Do
 =====
 
-* None
+* Test
+* Make otp programmer work and put it in Makefile
+* Factor out XTAG2.xn into module_xtag2
 
 Firmware Overview
 =================
@@ -31,11 +33,12 @@ that run on it: the boot laoder and the debugger.
 Known Issues
 ============
 
-* Does not build at present as it relies on an XUD module.
+* OTP needs otp.h and libotp
 
 Required Repositories
 ================
 
+* module_xud  https://www.xmos.com/download/public/USB-Library-and-HID-Example(1.6).zip
 * xcommon git\@github.com:xcore/xcommon.git
 * sc_jtag git\@github.com:xcore/sc_jtag.git
 

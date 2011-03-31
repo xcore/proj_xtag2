@@ -3,8 +3,8 @@ USB Bootloader Description and Standards
 
 Note: The USB interface used to connect XS1-L devices to the XMOS toolchain
 and referenced in this document is under current development and subject to
-improvements and changes---the latest version is described in the "XMOS USB
-Device Layer Library Guide" (http://www.xmos.com/published/xuddg)
+improvements and changes---the latest version is described in the `XMOS USB
+Device Layer Library Guide <http://www.xmos.com/published/xuddg>`_
 
 Introduction
 ------------
@@ -53,17 +53,17 @@ booted over the PHY.
 
 The bootloader works as follows:
 
-1. The L1 boots from OTP and runs code that enumerates on the USB bus and
+#. The L1 boots from OTP and runs code that enumerates on the USB bus and
    presents itself as a device that accepts programs to execute.
-1. xgdb (or other program) scans the USB bus and tries to find devices
+#. xgdb (or other program) scans the USB bus and tries to find devices
    that are a bootloader (determined by the VID, PID and version number of the device),
    and that have a serial number that indicates that the device is
    compatible. For example, xgdb requires a serial number that
    indicates that the L1 has hardware that is compatible with the debugger.
-1. xgdb (or other program) loads the new firmware into the device. When a
+#. xgdb (or other program) loads the new firmware into the device. When a
    device receives new firmware, bootcode copies its serial number to the 16 bytes
    at address 0x1B000 to 0x1B00F prior to executing the new code.
-1. On boot, the new firmware picks up the serial number to use
+#. On boot, the new firmware picks up the serial number to use
    from address 0x1B000, and then enumerates as a device with that serial
    number.
 
@@ -119,7 +119,7 @@ Any bootloadable USB device must enumerate using the following details:
 
   The serial number must be read out from OTP; first the word on address
   2040 must be read, if it is '0' then serial number
-  ``XXXXXXXXXXXXXXXX'' (16 Xs) shall be used. If word 2040 does not equal
+  ``XXXXXXXXXXXXXXXX`` (16 Xs) shall be used. If word 2040 does not equal
   0, then the entire serial number should be read out from word 2040 using
   differential mode. The least significant byte of the word at address 2040
   is the first byte of the serial number. The most significant byte of the
@@ -195,11 +195,11 @@ The L1 must use the following portmap. All pins labeled ULPI
 should be connected to the ULPI USB-PHY. Ports M and N should be declared
 as input ports (they must be tristated). 
 
-===== ====================== ================
+===== ====== ======= ======= ================
 Pin   Port                   Signal 
-===== ====================== ================
+----- ---------------------- ----------------
       1b     4b     8b       
------ ------ ------ -------- ----------------
+===== ====== ======= ======= ================
 X0D12 P1E0                   ULPI_STP 
 X0D13 P1F0                   ULPI_NXT 
 X0D14        P4C0   P8B0     ULPI_DATA0
@@ -215,7 +215,7 @@ X0D23 P1H0                   ULPI_CLK
 X0D24 P1I0                   ULPI_RST_N  
 X0D35 P1L0                   Declare as input
 X0D36 P1M0                   Declare as input
-===== ====================== ================
+===== ====== ======= ======= ================
 
 
 Some ports are used internally when the ULPI is in operation---see the
@@ -255,7 +255,7 @@ Standard USB-BOOT-5: USB serial number storage
 The serial number is stored in differential mode in the top 32 bytes of the
 OTP. Blank serial numbers appear as a sequence of 0 and -1
 words; any device with a blank serial number shall enumerate with
-``XXXXXXXXXXXXXXXX''.
+``XXXXXXXXXXXXXXXX``.
 
 Words 2040 to 2047 of the OTP should be programmed as follows:
 

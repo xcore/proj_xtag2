@@ -10,7 +10,7 @@ Introduction
 ------------
 
 This document explains how the XMOS toolchain can boot an XS1-L1 over USB.
-It is used, for example, by the debugger ({\sc xgdb}) to debug
+It is used, for example, by the debugger (``xgdb``) to debug
 systems that are built out of one or more XCores. The document explains how
 the bootloader works, the port layout, the schematics, and the protocol to
 use the bootloader over USB.
@@ -32,7 +32,7 @@ design to be compatible with the XMOS toolchain. These standards are:
 *USB-BOOT-3 Hardware design*
   The schematics to use when
   designing a system that uses a USB bootloader.
-*USB-BOOT-4 USB serial number assignment*
+*`USB-BOOT-4 USB serial number assignment`_*
   The meaning
   of serial numbers.
 *USB-BOOT-5 USB Serial number storage*
@@ -42,14 +42,11 @@ design to be compatible with the XMOS toolchain. These standards are:
 The use of the XMOS USB Vendor ID (VID) and the allocated Product Identifier (PID) are allowed
 provided that these standards are followed.
 
-\figurename~\ref{figure:block-layout} shows a block diagram of a device that supports bootloading over USB.
+The image below shows a block diagram of a device that supports bootloading over USB.
 It comprises a USB-PHY and an XS1-L1 device that is both controlling the PHY and being
 booted over the PHY.
 
-\begin{figure}[H]
-\begin{center}\includegraphics[width=0.75\textwidth]{../images/block-layout.pdf}\end{center}
-\caption{Block diagram of booting over USB}\label{figure:block-layout}
-\end{figure}
+.. image:: block-layout.svg
 
 The bootloader works as follows:
 
@@ -114,8 +111,8 @@ Any bootloadable USB device must enumerate using the following details:
 * Enumerate with major version number 0
 
 * Enumerate with a serial number of 16 digits where the first
-  character indicates the class; the serial numbers are defined in the
-  final section of this document: Standard USB-BOOT-4.
+  character indicates the class; the serial numbers are defined in
+  `Standard USB-BOOT-4: USB serial number assignment`_.
 
   The serial number must be read out from OTP; first the word on address
   2040 must be read, if it is '0' then serial number
@@ -222,7 +219,7 @@ Some ports are used internally when the ULPI is in operation---see the
 `XS1-L Hardware Design Checklist
 <http://www.xmos.com/published/xs1lcheck>`_ for further information.
 
-Developers are strongly encouraged to use the `schematics <../../../hw>`_ verbatim.
+Developers are strongly encouraged to use the `schematics <../../hw>`_ verbatim.
 
 Standard USB-BOOT-4: USB serial number assignment
 -------------------------------------------------
@@ -238,7 +235,7 @@ Serial numbers are interpreted as follows:
   companion document: `USB debugger description and standards <http://github.com/xcore/...>`_
 * A serial number of all 'X' is used to indicate that this device does not have
   an identifier programmed. They can be programmed according to
-  Section~\ref{sec:usb-boot-5} - Standard USB-BOOT-5.
+  `Standard USB-BOOT-5: USB serial number storage`_.
 * A serial number starting with 'R' or 'r' can be used freely.
 * All other serial numbers are reserved for future device classes.
 

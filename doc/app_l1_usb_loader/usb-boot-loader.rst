@@ -137,8 +137,8 @@ The bootloader must reside at at address 0x1B000 or above in memory,
 allowing programs of up to 44K of memory to be loaded into
 the device. The protocol of the USB bootloader requires two endpoints (in
 addition to endpoint 0) that are used as described below. Communication is
-synchronous: for every OUT transaction on Endpoint~0x01, the host must issue an IN
-transaction on Endpoint~0x82 to verify that the operation has completed.
+synchronous: for every OUT transaction on Endpoint 0x01, the host must issue an IN
+transaction on Endpoint 0x82 to verify that the operation has completed.
 
 Out Endpoint 1 (0x01)
 .....................
@@ -151,13 +151,13 @@ payload.
     Carries an address
     (bytes 0..3), a length (bytes 4..7), and $length$ bytes of data. The
     length must be a multiple of 4. After writing the data, the USB loader
-    will send back a LOADER_CMD_WRITE_MEM_ACK, see section~\ref{sec:inep-2}. No
+    will send back a LOADER_CMD_WRITE_MEM_ACK, see the next section. No
     writes should be requested to addresses 0x1B000 - 0x1FFFF inclusive.
 
 *LOADER_CMD_JUMP --- 5*
     Carries an address
     (bytes 0..3) only; it must have a payload of exactly 4 bytes. The USB loader
-    will send back a LOADER_CMD_JUMP_ACK (see section~\ref{sec:inep-2}) and then
+    will send back a LOADER_CMD_JUMP_ACK (see the next section) and then
     jump to the specified address prior to shutting down all resources.
 
 IN Endpoint 2 (0x82)
@@ -195,40 +195,36 @@ The L1 must use the following portmap. All pins labeled ULPI
 should be connected to the ULPI USB-PHY. Ports M and N should be declared
 as input ports (they must be tristated). 
 
-===== ====== ======= ======= ================
-Pin   Port                   Signal 
------ ---------------------- ----------------
-      1b     4b     8b       
-===== ====== ======= ======= ================
-X0D12 P1E0                   ULPI_STP 
-X0D13 P1F0                   ULPI_NXT 
-X0D14        P4C0   P8B0     ULPI_DATA0
-X0D15        P4C1   P8B1     ULPI_DATA1
-X0D16        P4D0   P8B2     ULPI_DATA2
-X0D17        P4D1   P8B3     ULPI_DATA3
-X0D18        P4D2   P8B4     ULPI_DATA4
-X0D19        P4D3   P8B5     ULPI_DATA5
-X0D20        P4C2   P8B6     ULPI_DATA6
-X0D21        P4C3   P8B7     ULPI_DATA7
-X0D22 P1G0                   ULPI_DIR
-X0D23 P1H0                   ULPI_CLK
-X0D24 P1I0                   ULPI_RST_N  
-X0D35 P1L0                   Declare as input
-X0D36 P1M0                   Declare as input
-===== ====== ======= ======= ================
+=====  ======  ======  =======  ================
+ Pin            Port                 Signal 
+-----  -----------------------  ----------------
+         1b      4b      8b                     
+=====  ======  ======  =======  ================
+X0D12  P1E0                     ULPI_STP 
+X0D13  P1F0                     ULPI_NXT 
+X0D14          P4C0    P8B0     ULPI_DATA0
+X0D15          P4C1    P8B1     ULPI_DATA1
+X0D16          P4D0    P8B2     ULPI_DATA2
+X0D17          P4D1    P8B3     ULPI_DATA3
+X0D18          P4D2    P8B4     ULPI_DATA4
+X0D19          P4D3    P8B5     ULPI_DATA5
+X0D20          P4C2    P8B6     ULPI_DATA6
+X0D21          P4C3    P8B7     ULPI_DATA7
+X0D22  P1G0                     ULPI_DIR
+X0D23  P1H0                     ULPI_CLK
+X0D24  P1I0                     ULPI_RST_N  
+X0D35  P1L0                     Declare as input
+X0D36  P1M0                     Declare as input
+=====  ======  ======  =======  ================
 
 
 Some ports are used internally when the ULPI is in operation---see the
 `XS1-L Hardware Design Checklist
 <http://www.xmos.com/published/xs1lcheck>`_ for further information.
 
-Developers are strongly encouraged to use the design in Figure~\ref{figure:schematics} verbatim.
+Developers are strongly encouraged to use the design below verbatim:
 
-\begin{figure}[H]
-\begin{center}\includegraphics[width=\textwidth]{../images/schematics-reduced.pdf}\end{center}
-\caption{Reference design of an L1 for USB boot loading. [TODO: delete
-  components that are not USB related, ie, XLINK, UART, and JTAG]}\label{figure:schematics}
-\end{figure}
+  .. image: schematics-reduced.pdf
 
 Standard USB-BOOT-4: USB serial number assignment
 -------------------------------------------------
@@ -241,7 +237,7 @@ Serial numbers are interpreted as follows:
   shall not be used by any device not developed by XMOS.
 * 'D' and 'd' are used to indicate that this hardware is compatible
   with the debugger. Serial numbers of this class are defined in a
-  companion document: ``{\em USB debugger description and standards}''.
+  companion document: `USB debugger description and standards <http://github.com/xcore/...>`_
 * A serial number of all 'X' is used to indicate that this device does not have
   an identifier programmed. They can be programmed according to
   Section~\ref{sec:usb-boot-5} - Standard USB-BOOT-5.
@@ -261,8 +257,8 @@ Words 2040 to 2047 of the OTP should be programmed as follows:
 
 
 * Word 2040 should contain the first 4 characters of the serial
-    number---byte 0 should be stored in the least significant byte of the
-    word, byte 3 should be stored in the most significant byte of the word.
+  number---byte 0 should be stored in the least significant byte of the
+  word, byte 3 should be stored in the most significant byte of the word.
 * Word 2041 must be a copy of word 2040.
 * Word 2042 should contain characters 4-7 of the serial number
 * Word 2043 must be a copy of word 2042.

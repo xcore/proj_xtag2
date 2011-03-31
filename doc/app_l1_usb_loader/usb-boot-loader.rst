@@ -55,17 +55,14 @@ The bootloader works as follows:
 
 1. The L1 boots from OTP and runs code that enumerates on the USB bus and
    presents itself as a device that accepts programs to execute.
-
 1. xgdb (or other program) scans the USB bus and tries to find devices
    that are a bootloader (determined by the VID, PID and version number of the device),
    and that have a serial number that indicates that the device is
    compatible. For example, xgdb requires a serial number that
    indicates that the L1 has hardware that is compatible with the debugger.
-
 1. xgdb (or other program) loads the new firmware into the device. When a
    device receives new firmware, bootcode copies its serial number to the 16 bytes
    at address 0x1B000 to 0x1B00F prior to executing the new code.
-
 1. On boot, the new firmware picks up the serial number to use
    from address 0x1B000, and then enumerates as a device with that serial
    number.
@@ -172,53 +169,53 @@ bytes of payload. The last 4 bytes of payload indicate whether another
 command can be issued: (0) means that another command can be issued, (-1)
 indicates that no other commands can be issued.
 
-*[LOADER_CMD_WRITE_MEM_ACK --- 2*
+*LOADER_CMD_WRITE_MEM_ACK --- 2*
     Has a payload of 4 bytes,
     indicating the success state only (0).
 
-*[LOADER_CMD_JUMP_ACK --- 6*
+*LOADER_CMD_JUMP_ACK --- 6*
     Has a payload of 4 bytes
     containing -1 indicating that the device will detach itself from the
     bus. On receiving this response, the host should wait for at least one
     millisecond and then issue a USB-reset.
 
 
-{Standard USB-BOOT-3: Hardware design}
-------------------------------
+Standard USB-BOOT-3: Hardware design
+------------------------------------
 
-{Clock frequencies}
+Clock frequencies
 .................
 
 The L1 must run at 400MHz derived from a 13 MHz Crystal.
 
-{Port map}
+Port map
 ........
 
 The L1 must use the following portmap. All pins labeled ULPI
 should be connected to the ULPI USB-PHY. Ports M and N should be declared
 as input ports (they must be tristated). 
 
-=====   ====================== =========
-Pin     Port                   Signal 
-=====   ====================== =========
-        1b     4b     8b       
-=====   ====== ====== ======== =========
-X0D12   P1E0                   ULPI_STP 
-X0D13   P1F0                   ULPI_NXT 
-X0D14          P4C0   P8B0     ULPI_DATA0
-X0D15          P4C1   P8B1     ULPI_DATA1
-X0D16          P4D0   P8B2     ULPI_DATA2
-X0D17          P4D1   P8B3     ULPI_DATA3
-X0D18          P4D2   P8B4     ULPI_DATA4
-X0D19          P4D3   P8B5     ULPI_DATA5
-X0D20          P4C2   P8B6     ULPI_DATA6
-X0D21          P4C3   P8B7     ULPI_DATA7
-X0D22   P1G0                   ULPI_DIR
-X0D23   P1H0                   ULPI_CLK
-X0D24   P1I0                   ULPI_RST_N  
-X0D35   P1L0                   Declare as input
-X0D36   P1M0                   Declare as input
-=====   ====================== =========
+===== ====================== =========
+Pin   Port                   Signal 
+===== ====================== =========
+      1b     4b     8b       
+===== ====== ====== ======== =========
+X0D12 P1E0                   ULPI_STP 
+X0D13 P1F0                   ULPI_NXT 
+X0D14        P4C0   P8B0     ULPI_DATA0
+X0D15        P4C1   P8B1     ULPI_DATA1
+X0D16        P4D0   P8B2     ULPI_DATA2
+X0D17        P4D1   P8B3     ULPI_DATA3
+X0D18        P4D2   P8B4     ULPI_DATA4
+X0D19        P4D3   P8B5     ULPI_DATA5
+X0D20        P4C2   P8B6     ULPI_DATA6
+X0D21        P4C3   P8B7     ULPI_DATA7
+X0D22 P1G0                   ULPI_DIR
+X0D23 P1H0                   ULPI_CLK
+X0D24 P1I0                   ULPI_RST_N  
+X0D35 P1L0                   Declare as input
+X0D36 P1M0                   Declare as input
+===== ====================== =========
 
 
 Some ports are used internally when the ULPI is in operation---see the

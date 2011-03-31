@@ -222,9 +222,7 @@ Some ports are used internally when the ULPI is in operation---see the
 `XS1-L Hardware Design Checklist
 <http://www.xmos.com/published/xs1lcheck>`_ for further information.
 
-Developers are strongly encouraged to use the design below verbatim:
-
-  .. image:: schematics.pdf
+Developers are strongly encouraged to use the `schematics <../../../hw>`_ verbatim.
 
 Standard USB-BOOT-4: USB serial number assignment
 -------------------------------------------------

@@ -8,7 +8,7 @@ This document explains how the XMOS toolchain uses an XS1-L1 in order to
 debug systems that are built out of one or more XCores. It explains how an
 XTAG2 works, and how the XTAG2 port layout, schematics, and software can be
 used to build XTAG2s that may be embedded in other systems. It uses the
-bootloader described in ``{\em USB boot loader description and standards}''
+bootloader described in `USB boot loader description and standards <../app_l1_usb_loader>`
 in order to download the firmware.
 
 This document specifies a set of the standards that must be followed for a
@@ -73,7 +73,7 @@ USB uses a Product Identifier (PID) and Vendor Identifier (VID)
 to indicate the product and vendor. The debugger firmware uses the PID and
 VID used by the bootloader, in order to avoid
 windows requiring multiple driver installations. The values of PID and VID
-are specified in Standard USB-DEBUG-1, in ``{\em USB boot loader description and standards}''.
+are specified in `Standard USB-DEBUG-1: USB enumeration details`_.
 
 Version numbers
 ---------------
@@ -130,16 +130,14 @@ Port map
 --------
 
 The L1 on the XTAG2 must use the following portmap together with the portmap
-specified in ``{\em USB boot loader description and standards}''. All pins labelled TARGET should be
+specified in `USB boot loader description and standards <../app_l1_usb_loader/>`. All pins labelled TARGET should be
 connected to the device to be debugged. Series resistors may be required,
 and one is strongly encouraged to use the `XTAG2 design <../../hw>`_
 verbatim.
 
 
 =====  ======  ======  =======  ================
- Pin            Port                 Signal 
------  -----------------------  ----------------
-Pin     1bit    4bit    8bit         Signal
+ Pin    1bit    4bit    8bit         Signal
 =====  ======  ======  =======  ================
 X0D0   P1A0                     TARGET_TDO
 X0D1   P1B0                     TARGET_TDI
@@ -155,7 +153,6 @@ X0D34  P1K0                     TARGET_DBG
 X0D35  P1L0                     TARGET_TRST_N
 X0D36  P1M0                     TARGET_RST_N
 =====  ======  ======  =======  ================
-
 
 The UART and XLINK connections are optional (refer to Standard USB-DEBUG-4
 for which serial number to use).
@@ -203,7 +200,7 @@ debug endpoints (0x01, 0x82) and the two serial endpoints (0x02, 0x83).
 The protocol over the endpoints for version 2 (minor version number of the
 USB device) is described below. If a debugger detects a device with a minor
 version number different from 2, then it can send a
-``DBG\_CMD\_FIRMWARE\_REBOOT'' in order to update the device with
+DBG_CMD_FIRMWARE_REBOOT in order to update the device with
 compatible firmware. This will upgrade or downgrade firmware as
 appropriate.
 
@@ -380,8 +377,8 @@ The serial number of a debug device not developed by XMOS shall start with
 a 'D' or a 'd'. The subsequent two characters indicate the
 debugging capabilities of this device.
 
-* Each of those two characters will be in the range ``0-9'',
-  ``A-Z'', ``a-z'',  ``\_'', and ``.'' encoding a 6-bit number. 
+* Each of those two characters will be in the range ``0-9``,
+  ``A-Z``, ``a-z``,  ``_``, and ``.`` encoding a 6-bit number. 
 * The least significant bit (Bit 0) indicates that this device has a UART. 
 * Bit 1 indicates that an XLink is connected
 * Bit 2 indicates that this device is JTAG

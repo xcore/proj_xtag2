@@ -67,22 +67,22 @@ The bootloader works as follows:
    from address 0x1B000, and then enumerates as a device with that serial
    number.
 
-{PID and VID}
-.............................
+PID and VID
+...........
 
 USB uses a PID and VID to indicate the product and vendor. These must be identical for the bootloader and new
 firmware if one wants to avoid Microsoft Windows requiring multiple driver
 installations. The values of PID and VID are specified in Standard USB-BOOT-1 below.
 
-{Version numbers}
-.............................
+Version numbers
+...............
 
 The version number is used to differentiate between bootloader (major
 version 0) and subsequent firmware (major version not equal to 0) if
 identical PID, VID and serial numbers are used.
 
-{Serial numbers}
-.............................
+Serial numbers
+..............
 
 The serial number must uniquely identify the hardware. The same serial
 number must be used for both the bootloader and the new firmware (again in
@@ -195,11 +195,11 @@ The L1 must use the following portmap. All pins labeled ULPI
 should be connected to the ULPI USB-PHY. Ports M and N should be declared
 as input ports (they must be tristated). 
 
-===== ====================== =========
+===== ====================== ================
 Pin   Port                   Signal 
-===== ====================== =========
+===== ====================== ================
       1b     4b     8b       
-===== ====== ====== ======== =========
+----- ------ ------ -------- ----------------
 X0D12 P1E0                   ULPI_STP 
 X0D13 P1F0                   ULPI_NXT 
 X0D14        P4C0   P8B0     ULPI_DATA0
@@ -215,12 +215,12 @@ X0D23 P1H0                   ULPI_CLK
 X0D24 P1I0                   ULPI_RST_N  
 X0D35 P1L0                   Declare as input
 X0D36 P1M0                   Declare as input
-===== ====================== =========
+===== ====================== ================
 
 
 Some ports are used internally when the ULPI is in operation---see the
-\htmladdnormallink{XS1-L Hardware Design Checklist
-(http://www.xmos.com/published/xs1lcheck) for further information.
+`XS1-L Hardware Design Checklist
+<http://www.xmos.com/published/xs1lcheck>`_ for further information.
 
 Developers are strongly encouraged to use the design in Figure~\ref{figure:schematics} verbatim.
 

@@ -198,7 +198,7 @@ as input ports (they must be tristated).
 =====  ======  ======  =======  ================
  Pin            Port                 Signal 
 -----  -----------------------  ----------------
-         1b      4b      8b                     
+       1bit    4bit    8bit                     
 =====  ======  ======  =======  ================
 X0D12  P1E0                     ULPI_STP 
 X0D13  P1F0                     ULPI_NXT 

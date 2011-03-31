@@ -141,7 +141,7 @@ verbatim.
 =====  ======  ======  =======  ================
  Pin            Port                 Signal 
 -----  -----------------------  ----------------
-       1bit    4bit    8bit                     
+Pin     1bit    4bit    8bit         Signal
 =====  ======  ======  =======  ================
 X0D0   P1A0                     TARGET_TDO
 X0D1   P1B0                     TARGET_TDI
@@ -241,34 +241,49 @@ listed below:
   The adapter shall return a DBG_CMD_DISCONNECT_ACK, see below.
 
 *DBG_CMD_GET_CORE_STATE_REQ --- 5*
+  TBD
 
 *DBG_CMD_ENABLE_THREAD_REQ --- 7*
+  TBD
 
 *DBG_CMD_DISABLE_THREAD_REQ --- 9*
+  TBD
 
 *DBG_CMD_READ_REGS_REQ --- 11*
+  TBD
 
 *DBG_CMD_WRITE_REGS_REQ --- 13*
+  TBD
 
 *DBG_CMD_READ_MEM_REQ --- 100*
+  TBD
 
 *DBG_CMD_WRITE_MEM_REQ --- 102*
+  TBD
 
 *DBG_CMD_READ_OBJ_REQ --- 104*
+  TBD
 
 *DBG_CMD_STEP_REQ --- 106*
+  TBD
 
 *DBG_CMD_CONTINUE_REQ --- 108*
+  TBD
 
 *DBG_CMD_ADD_BREAK_REQ --- 110*
+  TBD
 
 *DBG_CMD_REMOVE_BREAK_REQ --- 112*
+  TBD
 
 *DBG_CMD_GET_STATUS_REQ --- 114*
+  TBD
 
 *DBG_CMD_INTERRUPT_REQ --- 116*
+  TBD
 
 *DBG_CMD_RESET_REQ --- 118*
+  TBD
 
 *DBG_CMD_FIRMWARE_REBOOT --- 0x060210ad*
   This command is ignored. No payload is required.
@@ -293,38 +308,55 @@ Debug In Endpoint 2 (0x82)
   and answered.
 
 *DBG_CMD_DISCONNECT_ACK --- 4*
+  TBD
 
 *DBG_CMD_GET_CORE_STATE_ACK --- 6*
+  TBD
 
 *DBG_CMD_ENABLE_THREAD_ACK --- 8*
+  TBD
 
 *DBG_CMD_DISABLE_THREAD_ACK --- 10*
+  TBD
 
 *DBG_CMD_READ_REGS_ACK --- 12*
+  TBD
 
 *DBG_CMD_WRITE_REGS_ACK --- 14*
+  TBD
 
 *DBG_CMD_READ_MEM_ACK --- 101*
+  TBD
 
 *DBG_CMD_WRITE_MEM_ACK --- 103*
+  TBD
 
 *DBG_CMD_READ_OBJ_ACK --- 105*
+  TBD
 
 *DBG_CMD_STEP_ACK --- 107*
+  TBD
 
 *DBG_CMD_CONTINUE_ACK --- 109*
+  TBD
 
 *DBG_CMD_ADD_BREAK_ACK --- 111*
+  TBD
 
 *DBG_CMD_REMOVE_BREAK_ACK --- 113*
+  TBD
 
 *DBG_CMD_GET_STATUS_ACK --- 115*
+  TBD
 
 *DBG_CMD_INTERRUPT_ACK --- 117*
+  TBD
 
 *DBG_CMD_RESET_ACK --- 119*
+  TBD
 
 *DBG_CMD_FIRMWARE_REBOOT_ACK --- 0x160210ad*
+  TBD
 
 
 
@@ -349,23 +381,17 @@ Standard USB-DEBUG-4: USB debug serial number assignment
 The serial number of a debug device not developed by XMOS shall start with
 a 'D' or a 'd'. The subsequent two characters indicate the
 debugging capabilities of this device.
-\begin{itemize}
-  \item
-    Each of those two characters will be in the range ``0-9'',
-    ``A-Z'', ``a-z'',  ``\_'', and ``.'' encoding a 6-bit number. 
-  \item
-    The least significant bit (Bit 0) indicates that this device has a UART. 
-%  \item
- %   Bit 1 indicates that an XLink is connected
- \item
-    Bit 2 indicates that this device is JTAG
-    compatible (the hardware follows standard USB-DEBUG-3, above), and that the debugger can use
-    this device to upload JTAG code to.
-  \item
-    Bit 3 indicates that the first core on the JTAG chain should be skipped.
-  \item
-    Bits 1 and 4-11 are reserved.
-\end{itemize}
+
+* Each of those two characters will be in the range ``0-9'',
+  ``A-Z'', ``a-z'',  ``\_'', and ``.'' encoding a 6-bit number. 
+* The least significant bit (Bit 0) indicates that this device has a UART. 
+* Bit 1 indicates that an XLink is connected
+* Bit 2 indicates that this device is JTAG
+  compatible (the hardware follows standard USB-DEBUG-3, above), and that the debugger can use
+  this device to upload JTAG code to.
+* Bit 3 indicates that the first core on the JTAG chain should be skipped.
+* Bits 1 and 4-11 are reserved.
+
 Only JTAG with optional UART is supported at present; which are the
 values D04 and D05.
 

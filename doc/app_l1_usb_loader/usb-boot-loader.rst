@@ -224,7 +224,7 @@ Some ports are used internally when the ULPI is in operation---see the
 
 Developers are strongly encouraged to use the design below verbatim:
 
-  .. image: schematics-reduced.pdf
+  .. image: schematics.pdf
 
 Standard USB-BOOT-4: USB serial number assignment
 -------------------------------------------------

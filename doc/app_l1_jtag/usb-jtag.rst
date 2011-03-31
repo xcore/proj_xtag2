@@ -33,7 +33,10 @@ debugger design to be compatible with the XMOS toolchain. These standards are:
 The use of the XMOS USB Vendor ID and the allocated PID are allowed
 provided that these standards are followed.
 
-A block diagram of an XTAG2 is shown in Figure~\ref{figure:block-layout}.
+A block diagram of an XTAG2 is shown below:
+
+.. image:: block-layout.svg
+
 It comprises a USB-PHY, an L1 that is used by the debugger (it runs the USB
 to debugger firmware) connected to one L1 that is being debugged. The XTAG2 has a single
 L1 and a 20 way connector that can connect it to any other board that
@@ -62,11 +65,6 @@ An XTAG2 works as follows:
    and register read/writes on specific threads. xgdb uses the debugger
    firmware for remote
    debugging of applications.
-
-\begin{figure}
-\begin{center}\includegraphics[width=\textwidth]{../images/block-layout.pdf}\end{center}
-\caption{Block diagram of debugging over USB}\label{figure:block-layout}
-\end{figure}
 
 PID and VID
 -----------

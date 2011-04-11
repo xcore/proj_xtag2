@@ -22,7 +22,6 @@ To Do
 
 * Test
 * Sort otp.h out - it should not be in this repo
-* Get module_xud and module_usb_shared from the right place.
 
 Firmware Overview
 =================
@@ -51,16 +50,9 @@ Required Repositories
 
 * xcommon git\@github.com:xcore/xcommon.git
 * sc_jtag git\@github.com:xcore/sc_jtag.git
-* xmos_l1_usb_hid  https://www.xmos.com/download/public/USB-Library-and-HID-Example(1.6).zip
+* sc_usb git\@github.com:xcore/sc_usb.git
 
-The first two are repos on github that should be installed beside the directory holding this repo.
-The third item is not a repo that is controlled under git. This directory should be downloaded from
-the XMOS website and placed besides the other repos. Then enter the proj_xtag2 directory and execute::
-
-   xmake clean && xmake all
-
-This should build all three apps.
-xmos_l1_usb_hid contains two modules (module_xud and module_usb_shared) that are required. The direcotry structure should hence be::
+The directory structure should be::
 
   ...
   proj_xtag2/
@@ -71,7 +63,7 @@ xmos_l1_usb_hid contains two modules (module_xud and module_usb_shared) that are
     module_jtag_master/
     module_xcore_debug/
     ...
-  xmos_l1_usb_hid/
+  sc_usb/
     module_xud/
     module_usb_shared/
     ...

@@ -8,7 +8,7 @@ This document explains how the XMOS toolchain uses an XS1-L1 in order to
 debug systems that are built out of one or more XCores. It explains how an
 XTAG2 works, and how the XTAG2 port layout, schematics, and software can be
 used to build XTAG2s that may be embedded in other systems. It uses the
-bootloader described in `USB boot loader description and standards <../app_l1_usb_loader>`
+bootloader described in `USB boot loader description and standards <../app_l1_usb_loader>`_
 in order to download the firmware.
 
 This document specifies a set of the standards that must be followed for a
@@ -130,7 +130,8 @@ Port map
 --------
 
 The L1 on the XTAG2 must use the following portmap together with the portmap
-specified in `USB boot loader description and standards <../app_l1_usb_loader/>`. All pins labelled TARGET should be
+specified in `USB boot loader description and standards
+<../app_l1_usb_loader/>`_. All pins labelled TARGET should be
 connected to the device to be debugged. Series resistors may be required,
 and one is strongly encouraged to use the `XTAG2 design <../../hw>`_
 verbatim.

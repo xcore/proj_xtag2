@@ -232,7 +232,7 @@ Serial numbers are interpreted as follows:
   shall not be used by any device not developed by XMOS.
 * 'D' and 'd' are used to indicate that this hardware is compatible
   with the debugger. Serial numbers of this class are defined in a
-  companion document: `USB debugger description and standards <http://github.com/xcore/...>`_
+  companion document: `USB debugger description and standards <../app_l1_jtag/>`_
 * A serial number of all 'X' is used to indicate that this device does not have
   an identifier programmed. They can be programmed according to
   `Standard USB-BOOT-5: USB serial number storage`_.

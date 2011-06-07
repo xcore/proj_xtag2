@@ -20,21 +20,34 @@ then you need to go through the following steps:
 
 #. Burn the OTP. You do this by running::
 
-     xrun --io 00.02.xe
+     xrun --io images/00.02/otp/otp_usb_loader_00.02.xe
 
    on the device that you are programming. Before you run this command make sure that the only device attached is the L1
    that you want to make into an XTAG2. Programming the OTP is irreversible. If you happen to have something else attached, it
    will burn the OTP image on that other L1, rendering it useless.
 
+   00.02 is a tried an tested version of the XTAG2 software. It has some problems when booting through hubs and on
+   some makes of Macbooks. A new version 00.03 is available that should not have these issues, but it is not tested 
+   as well as the 00.02 version.
+
 #. Plug the new XTAG2 into your computer using a USB cable - if it was already plugged in (because the L1 is USB powered),
    then unplug and plug it in to powercycle your new XTAG2.
 
-#. It should come up as a device with id 'XXXXXXXXXXXXXXX' (try xrun --listdevices). If it doesn't, something has gone wrong.
-   You may be able to debug it by using gdb and having a look inside your XTAG2.
+#. Now check whether the device come up. Try::
+
+     xrun --listdevices
+
+   It should come up as a device with id 'XXXXXXXXXXXXXXX'. If it doesn't, something has gone wrong.
+   You may be able to debug it by using gdb and having a look inside your XTAG2. Unplug the XTAG2 you have used to
+   program the L1, otherwise that XTAG2 will also come up.
 
 #. Now unplug all XTAG2 devices except your new one, and run burnSerial in the burn_serial_app directory::
 
      burnSerial -x D07 0
 
-   This states that your XTAG2 can be used as a JTAG key that has an XLINK and UART wired up. See the documentation in
+   This program is only compiled for Mac computers at present - if you ahve a linux machine it should be straightforward to
+   port (just change the Makefile and replace Mac with Linux32 or Linux64 as appropriate). Windows is a bit harder because
+   libusb has deviated and is on the TODO list to be ported.
+
+   The `D07` states that your XTAG2 can be used as a JTAG key that has an XLINK and UART wired up. See the documentation in
    app_l1_jtag for more detail on the serial number assignment.

@@ -45,7 +45,7 @@ then you need to go through the following steps:
 
      burnSerial -x D07 0
 
-   This program is only compiled for Mac computers at present - if you ahve a linux machine it should be straightforward to
+   This program is only compiled for Mac computers at present - if you have a linux machine it should be straightforward to
    port (just change the Makefile and replace Mac with Linux32 or Linux64 as appropriate). Windows is a bit harder because
    libusb has deviated and is on the TODO list to be ported.
 

@@ -2,7 +2,7 @@ Making your own XTAG2
 =====================
 
 The information in this repository enables you to make your own XTAG2.
-Try and avoid tha tif possible - you need to program the OTP and any mistake in
+Try and avoid that if possible - you need to program the OTP and any mistake in
 the process means that you have to replace the chip.
 
 If you really want to build an XTAG2, for example to integrate it on a design,

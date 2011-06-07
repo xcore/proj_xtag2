@@ -27,6 +27,6 @@ Options for `burnSerial` are:
 
 Note that once you have burned a serial number, you cannot change it.
 
-TODO: supply the source code of the binary in burnSerial.
+TODO: make Makefile work with Linux32/Linux64
 
-TODO: supply libusb and friends for other platforms.
+TODO: port burnSerial to WINDOWS.

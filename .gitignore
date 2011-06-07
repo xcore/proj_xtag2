@@ -7,3 +7,5 @@
 *.xi
 *.i
 *.a
+burn_serial_number/app_l1_otp_programmer.h
+burn_serial_number/burnSerial

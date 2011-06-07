@@ -1,6 +1,6 @@
 TARGET = XS1-L1A-LQ64
 
-APP_NAME = app_l1_otp_programmer.xe
+APP_NAME = app_l1_otp_programmer
 
 XCC_FLAGS   	= -D G1 -DSPDIF -O2 -g -Wall -lotp_l1
 

@@ -22,6 +22,8 @@ To Do
 
 * Test
 * Sort otp.h out - it should not be in this repo
+* Port `burn_serial_number` to other platforms (Linux, Windows)
+* Provide source code for binary in `burn_serial_number`
 
 Firmware Overview
 =================
@@ -51,6 +53,7 @@ Required Repositories
 * xcommon git\@github.com:xcore/xcommon.git
 * sc_jtag git\@github.com:xcore/sc_jtag.git
 * sc_usb git\@github.com:xcore/sc_usb.git
+* xmos_libusb_binaries git://github.com/mattfyles/xmos_libusb_binaries.git
 
 The directory structure should be::
 
@@ -69,6 +72,9 @@ The directory structure should be::
     ...
   xcommon/
     ...
+  xmos_libusb_binaries/
+    ...
+
   ...
 Support
 =======

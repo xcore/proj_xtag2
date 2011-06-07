@@ -1,6 +1,7 @@
 Burning Serial Numbers
 ----------------------
 
+
 Once you have programmed the OTP of an XTAG2 with the code for it to be a
 USB bootloader, you need to program the top words of the OTP with the
 serial number to be used.

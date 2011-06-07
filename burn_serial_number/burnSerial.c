@@ -12,6 +12,15 @@
 #include <string.h>
 #include <stdio.h>
 
+/*
+ * This array of data is a program that wirtes into OTP. The source is in
+ * ../app_l1_otp_programmer. A few lines in the makefile demonstrate how to
+ * create the binary from the compiled .xe file. Note that this file is not
+ * included here, since the location of the XXXXXXXXXXXXX array is
+ * hardcoded and depends on the tool version to use for
+ * app_l1_otp_programmer. In practice there is little reason to change it
+ * other than that you may want to use a new version of libotp.
+ */
 unsigned int burnData[] = {
   0xfed1684b, 0xf00417ec, 0xfec2688b, 0xd04a1fec,
   0x2ff0d00f, 0x7780f001, 0xd82cf003, 0xf00337fb,
@@ -476,6 +485,9 @@ int device_write(char *data, unsigned int length, unsigned int timeout) {
 }
 
 
+/*
+ * Implement the USB bootloader protocol.
+ */
 static void burnSerial() {
   unsigned int i = 0;
   unsigned int address = 0;

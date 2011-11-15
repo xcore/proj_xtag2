@@ -32,9 +32,9 @@
   DEVICE,                            /* 1  bdescriptorType */ \
   0,                                 /* 2  bcdUSB */ \
   2,                                 /* 3  bcdUSB */ \
-  0xEF,                              /* 4  bDeviceClass */ \
-  0x02,                              /* 5  bDeviceSubClass */ \
-  0x01,                              /* 6  bDeviceProtocol */ \
+  0x02,                              /* 4  bDeviceClass */ \
+  0x00,                              /* 5  bDeviceSubClass */ \
+  0x00,                              /* 6  bDeviceProtocol */ \
   64,                                /* 7  bMaxPacketSize */ \
   0xb1,                              /* 8  idVendor */ \
   0x20,                              /* 9  idVendor */ \
@@ -56,9 +56,9 @@
     DEVICE_QUALIFIER,                /* 1  bDescriptorType */ \
     0,                               /* 2  bcdUSB */ \
     2,                               /* 3  bcdUSB */ \
-    0x02,                               /* 4  bDeviceClass */ \
-    0x00,                               /* 5  bDeviceSubClass */ \
-    0x00,                               /* 6  bDeviceProtocol */ \
+    2,                               /* 4  bDeviceClass */ \
+    0,                               /* 5  bDeviceSubClass */ \
+    0,                               /* 6  bDeviceProtocol */ \
     64,                              /* 7  bMaxPacketSize */ \
     0x01,                            /* 8  bNumConfigurations : Number of possible configs */ \
     0x00                             /* 9  bReserved (must be zero) */ \
@@ -77,29 +77,12 @@ static unsigned char cfgDesc[] =
     /* Configuration descriptor: */ 
     0x09,                               /* 0  bLength */ 
     0x02,                               /* 1  bDescriptorType */ 
-    0x81, 0x0,                         /* 2  wTotalLength */ 
+    0x71, 0x0,                         /* 2  wTotalLength */ 
     0x04,                               /* 4  bNumInterface: Number of interfaces*/ 
     0x01,                               /* 5  bConfigurationValue */ 
     0x00,                               /* 6  iConfiguration */ 
     0xC0,                               /* 7  bmAttributes */ 
     0xFA,                               /* 8  bMaxPower */  
-
-
-
-
-
-
-
-    /* Interface Association Descriptor */
-
-    0x08,                               /* 0  bLength: 8 */
-    0x0B,                               /* 1  bDescriptorType: INTERFACEASS */
-    0x00,                               /* 2  bFirstInterface */
-    0x02,                               /* 4  bInterfaceCount */
-    0xff,                               /* 5  bInterfaceClass: VENDOR */
-    0xff,                               /* 6  bInterfaceSubClass: VENDOR */
-    0xff,                               /* 7  bInterfaceProtocol: VENDOR */
-    0x00,                               /* 8  iInterface */ 
 
     /*  Interface Descriptor (Note: Must be first with lowest interface number)r */
     0x09,                               /* 0  bLength: 9 */
@@ -157,17 +140,6 @@ static unsigned char cfgDesc[] =
 
 
 
-    /* Interface Association Descriptor */
-
-    0x08,                               /* 0  bLength: 8 */
-    0x0B,                               /* 1  bDescriptorType: INTERFACEASS */
-    0x02,                               /* 2  bFirstInterface */
-    0x02,                               /* 4  bInterfaceCount */
-    0x02,                               /* 5  bInterfaceClass */
-    0x00,                               /* 6  bInterfaceSubClass */
-    0x00,                               /* 7  bInterfaceProtocol */
-    0x00,                               /* 8  iInterface */ 
-
 
   0x09,                /* 0  bLength */
   0x04,                /* 1  bDescriptorType */ 
@@ -176,7 +148,7 @@ static unsigned char cfgDesc[] =
   0x01,                /* 4: bNumEndpoints */
   0x02,                /* 5: bInterfaceClass */ 
   0x02,                /* 6: bInterfaceSubClass */ 
-  0x01,                /* 7: bInterfaceProtocol*/ 
+  0x02,                /* 7: bInterfaceProtocol*/ 
   0x00,                /* 8  iInterface */ 
 
 

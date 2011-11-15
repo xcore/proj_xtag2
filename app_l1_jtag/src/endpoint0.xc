@@ -32,13 +32,13 @@
   DEVICE,                            /* 1  bdescriptorType */ \
   0,                                 /* 2  bcdUSB */ \
   2,                                 /* 3  bcdUSB */ \
-  0xff,                              /* 4  bDeviceClass */ \
-  0xff,                              /* 5  bDeviceSubClass */ \
-  0xff,                              /* 6  bDeviceProtocol */ \
+  0x02,                              /* 4  bDeviceClass */ \
+  0x00,                              /* 5  bDeviceSubClass */ \
+  0x00,                              /* 6  bDeviceProtocol */ \
   64,                                /* 7  bMaxPacketSize */ \
   0xb1,                              /* 8  idVendor */ \
   0x20,                              /* 9  idVendor */ \
-  0xd1,                              /* 10 idProduct */ \
+  0xd2,                              /* 10 idProduct */ \
   0xf7,                              /* 11 idProduct */ \
   0x02,                              /* 12 bcdDevice : Device release number */ \
   0x10,                              /* 13 bcdDevice : Device release number */ \
@@ -77,8 +77,8 @@ static unsigned char cfgDesc[] =
     /* Configuration descriptor: */ 
     0x09,                               /* 0  bLength */ 
     0x02,                               /* 1  bDescriptorType */ 
-    0x37, 0x0,                         /* 2  wTotalLength */ 
-    0x02,                               /* 4  bNumInterface: Number of interfaces*/ 
+    0x71, 0x0,                         /* 2  wTotalLength */ 
+    0x04,                               /* 4  bNumInterface: Number of interfaces*/ 
     0x01,                               /* 5  bConfigurationValue */ 
     0x00,                               /* 6  iConfiguration */ 
     0xC0,                               /* 7  bmAttributes */ 
@@ -138,26 +138,77 @@ static unsigned char cfgDesc[] =
     0x00, 0x02,                         /* 4  wMaxPacketSize */
     0x01,                               /* 6  bInterval */
 
-#if 0
-/* ISO */
-/* Endpoint Descriptor (4.10.1.1): */
-    0x07,                               /* 0  bLength: 7 */
-    0x05,                               /* 1  bDescriptorType: ENDPOINT */
-    0x83,                               /* 2  bEndpointAddress (D7: 0:out, 1:in) */
-    0b00001101,                         /* 3  bmAttributes (bitmap) */
-    0x10, 0x00,                         /* 4  wMaxPacketSize */
-    0x04,                               /* 6  bInterval */
-#endif
 
-#if 0
-/* Endpoint Descriptor (4.10.1.1): */
-    0x07,                               /* 0  bLength: 7 */
-    0x05,                               /* 1  bDescriptorType: ENDPOINT */
-    0x83,                               /* 2  bEndpointAddress (D7: 0:out, 1:in) */
-    0x02,
-    0x00, 0x02,                         /* 4  wMaxPacketSize */
-    0x01,                               /* 6  bInterval */
-#endif
+
+
+  0x09,                /* 0  bLength */
+  0x04,                /* 1  bDescriptorType */ 
+  0x02,                /* 2  bInterfacecNumber */
+  0x00,                /* 3  bAlternateSetting */
+  0x01,                /* 4: bNumEndpoints */
+  0x02,                /* 5: bInterfaceClass */ 
+  0x02,                /* 6: bInterfaceSubClass */ 
+  0x02,                /* 7: bInterfaceProtocol*/ 
+  0x00,                /* 8  iInterface */ 
+
+
+  0x05,                /* 0  bLength */ 
+  0x24,                /* 1  bDescriptortype, CS_INTERFACE */ 
+  0x00,                /* 2  bDescriptorsubtype, HEADER */ 
+  0x00, 0x02,          /* 3  BCD */ 
+
+  0x05,                /* 0  bLength */ 
+  0x24,                /* 1  bDescriptortype, CS_INTERFACE */ 
+  0x06,                /* 2  bDescriptorsubtype, UNION */ 
+  0x02,
+  0x03,
+
+  0x05,                /* 0  bLength, Descriptor size in bytes */
+  0x24,                /* 1  bDescriptortype, CS_INTERFACE */
+  0x01,                /* 2  bDescriptorsubtype, CALL MANAGEMENT */
+  0x03,                /* 3  bmCapabilities, DIY */
+  0x03,                /* 4  bDataInterface */
+
+  0x04,                /* 0  bLength */ 
+  0x24,                /* 1  bDescriptortype, CS_INTERFACE */ 
+  0x02,                /* 2  bDescriptorsubtype, ABSTRACT CONTROL MANAGEMENT */ 
+  0x00,                /* 3 bmCapabilities: none */
+
+  0x07,                /* 0  bLength */ 
+  0x05,                /* 1  bDescriptorType */ 
+  0x81,                /* 2  bEndpointAddress */ 
+  0x03,                /* 3  bmAttributes */ 
+  0x40,                /* 4  wMaxPacketSize */ 
+  0x00,                /* 5  wMaxPacketSize */ 
+  0x01,                /* 6  bInterval */ 
+
+
+  0x09,                /* 0  bLength */
+  0x04,                /* 1  bDescriptorType */ 
+  0x03,                /* 2  bInterfacecNumber */
+  0x00,                /* 3  bAlternateSetting */
+  0x02,                /* 4: bNumEndpoints */
+  0x0A,                /* 5: bInterfaceClass */ 
+  0x00,                /* 6: bInterfaceSubClass */ 
+  0x00,                /* 7: bInterfaceProtocol*/ 
+  0x04,                /* 8  iInterface */ 
+
+  0x07,                /* 0  bLength */ 
+  0x05,                /* 1  bDescriptorType */ 
+  0x03,                /* 2  bEndpointAddress */ 
+  0x02,                /* 3  bmAttributes */ 
+  0x00,                /* 4  wMaxPacketSize */ 
+  0x02,                /* 5  wMaxPacketSize */ 
+  0x00,                /* 6  bInterval */ 
+  
+  0x07,                /* 0  bLength */ 
+  0x05,                /* 1  bDescriptorType */ 
+  0x84,                /* 2  bEndpointAddress */ 
+  0x02,                /* 3  bmAttributes */ 
+  0x00,                /* 4  wMaxPacketSize */ 
+  0x02,                /* 5  wMaxPacketSize */ 
+  0x01                 /* 6  bInterval */ 
+
 };
 
 #define DESC_STR_LANGIDS \
@@ -211,10 +262,60 @@ static unsigned char strDescs[][40] =
     "string0", 				                    /* 0: Place holder for string 0 (LANGIDs) */ 
     "XMOS",				                    /* 1: iManufacturer */ 
     "XMOS XTAG-2",                   		       	    /* 2: iProduct */
-    "Not Used",
-    "Not Used",
+    "ID3",
+    "ID4",
     "XTAG2L16400000000"
 }; 
+
+
+int ControlInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket sp)
+{
+    unsigned char buffer[64];
+    // Recipient: Interface
+    // NOTE: CLASS SPECIFIC REQUESTS
+
+    switch(sp.bRequest )
+    { 
+        case 0x43:      
+            // TODO
+            return XUD_SetBuffer_ResetPid(c_ep0_in, buffer, 0, PIDn_DATA1);
+            break;
+            
+        case 0x21:
+            // Windows calls this - even though we say we do not support it.
+            buffer[0] = 0;
+            buffer[1] = 132;
+            buffer[2] = 3;
+            buffer[3] = 0;
+            buffer[4] = 0;
+            buffer[5] = 0;
+            buffer[6] = 8;
+            XUD_SetBuffer_ResetPid(c_ep0_in, buffer, 7, PIDn_DATA1);
+            return XUD_GetBuffer(c_ep0_out, buffer);
+            break;
+
+        case 0x22:      
+            // Linux calls this - even though we say we do not support it.
+            return XUD_SetBuffer_ResetPid(c_ep0_in, buffer, 0, PIDn_DATA1);
+            break;
+
+        case 0x20:      
+            // Linux calls this - even though we say we do not support it.
+            (void) XUD_GetBuffer(c_ep0_out, buffer);
+            return XUD_SetBuffer_ResetPid(c_ep0_in, buffer, 0, PIDn_DATA1);
+            break;
+            
+
+        default:
+            /* Error case */
+            printintln(sp.bRequest);
+            break;
+    }
+
+    return 0;
+}
+
+
 
 
 void get_serial_number(unsigned char &serial_number, unsigned int length);
@@ -245,6 +346,20 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
         if (retVal == 1) {
             /* Request not covered by XUD_DoEnumReqs() so decode ourselves */
             switch(sp.bmRequestType.Type) {
+            case BM_REQTYPE_TYPE_CLASS:
+                switch(sp.bmRequestType.Recipient)
+                {
+                case BM_REQTYPE_RECIP_INTER:
+                    /* Inspect for Control interface num */
+                    if(sp.wIndex == 0)
+                    {
+                        ControlInterfaceClassRequests(ep0_out, ep0_in, sp);
+                    }
+                    break;
+                    
+                }
+                break;
+
             case BM_REQTYPE_TYPE_STANDARD:
                 switch(sp.bmRequestType.Recipient) {
                 case BM_REQTYPE_RECIP_INTER:

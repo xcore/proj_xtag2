@@ -61,7 +61,7 @@ extern void dbg_cmd_manager_nochan(int input_size, int input[], int &output_size
 
 /////// UART CODE ////////
 void uart_xc_readAll(chanend, chanend, chanend);
-extern uart_readAll(chanend a, chanend b, chanend c, in port d, unsigned char buffer[16][512], int x);
+extern uart_readAll(chanend a, chanend b, chanend c, in port d, unsigned char buffer[NUM_BUFFERS][BUF_WORDS], int x);
 
 unsigned bit_time = 0;
 extern unsigned char data_buffer[NUM_BUFFERS][BUF_WORDS];
@@ -155,6 +155,7 @@ void uart_thread(chanend from_usb, chanend xlink_data, chanend reset) {
 
 int from_host_buf_uart[USB_HOST_BUF_WORDS];
 
+#pragma unsafe arrays
 void uart_usb_thread(chanend from_host, chanend to_host, chanend to_uart) {
     char cmd = 0;
     int uart_byte_count;
@@ -164,24 +165,28 @@ void uart_usb_thread(chanend from_host, chanend to_host, chanend to_uart) {
 
     XUD_ep ep_from_host = XUD_Init_Ep(from_host);
     XUD_ep ep_to_host = XUD_Init_Ep(to_host);
+
+    XUD_GetBuffer(ep_from_host, (from_host_buf_uart, char[USB_HOST_BUF_WORDS*4])); 
     
     while (1) {
-        int datalength = XUD_GetBuffer(ep_from_host, (from_host_buf_uart, char[USB_HOST_BUF_WORDS*4])); 
-        if (datalength > 0) {
+        int datalength = 0;
+        //if (datalength > 0) {
             if (!started_tx) {
               outuint(to_uart, 1);
               started_tx = 1;
             }
             select {
               case inuchar_byref(to_uart, buf_num):
-                datalength = XUD_SetBuffer(ep_to_host, data_buffer_[buf_num], USB_HOST_BUF_WORDS*4);            // Send to host
+                for (int i = 0; i < 128; i++) 
+                  from_host_buf_uart[i] = (data_buffer_[buf_num], unsigned[])[i];
                 outuint(to_uart, 1);
+                datalength = XUD_SetBuffer(ep_to_host, (from_host_buf_uart, char[]), USB_HOST_BUF_WORDS*4);            // Send to host
                 break;
               default:
                 datalength = XUD_SetBuffer(ep_to_host, (zero_buf, char[4]), 4);            // Send to host
                 break;
             }
-        }
+        //}
 
         if (datalength < 0) {
             XUD_ResetEndpoint(ep_from_host, ep_to_host);

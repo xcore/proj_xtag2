@@ -1,0 +1,17 @@
+This is an example of using the USB dynamic loader to run a USB HID class device
+instead of the XTAG2 JTAG firmware. It uses the same mechanism as xrun to load 
+firmware onto the device once connected.
+
+The app_l1_hid.h header is the code from the XMOS HID USB Example library with the 
+only change to map the USB phy reset pin correctly for the XTAG2. On loading, it moves
+the mouse cursor around a 40 pixel square.
+
+To run this, build the binary, connect an XTAG2 then call:
+./runDynamic
+
+Do not use xrun or xgdb prior to calling this as once the JTAG firmware has been loaded
+this example cannot be loaded over the top. Disconnecting and reconnecting the XTAG2 will
+clear the memory.
+
+More details will shortly be available in an application note.
+

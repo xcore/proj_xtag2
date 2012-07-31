@@ -13,6 +13,6 @@ hello.xe: hello.xc
 
 app_l1_otp_programmer.h: $(OTPPROGRAMMER)
 	xobjdump --split --strip $(OTPPROGRAMMER)
-	od -t x4 image_n0c0.bin | awk 'BEGIN{print "int burnData[] = {"} END {print "};"} {for(i=2;i<NF;i++) {print "  0x" $$i ","}}' > app_l1_otp_programmer.h
+	od -t x4 -v image_n0c0.bin | awk 'BEGIN{print "int burnData[] = {"} END {print "};"} {for(i=2;i<=NF;i++) {print "  0x" $$i ","}}' > app_l1_otp_programmer.h
 	rm image_n0c0.bin platform_def.xn program_info.txt
 

@@ -1,28 +1,19 @@
-// Copyright (c) 2011, XMOS Ltd, All rights reserved
-// This software is freely distributable under a derivative of the
-// University of Illinois/NCSA Open Source License posted in
-// LICENSE.txt and at <http://github.xcore.com/>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef _WIN32
+#include "usb.h"
+#else
 #include "libusb.h"
+#endif
 
-
-#include <string.h>
-#include <stdio.h>
-
-// Replace this line with your header generated from an XMOS XE file
 #include "app_l1_hid.h"
 
-#define XMOS_VID 0x20b1
-#define JTAG_PID 0xf7d1
-
-/* the device's endpoints */
-
-#define EP_IN 0x82
-#define EP_OUT 0x01
-
+/* the device's vendor and product id */
+#define XMOS_XTAG2_VID 0x20b1
+#define XMOS_XTAG2_PID 0xf7d1
+#define XMOS_XTAG2_EP_IN 0x82
+#define XMOS_XTAG2_EP_OUT 0x01
 
 #define LOADER_BUF_SIZE 512
 #define LOADER_CMD_SUCCESS 0
@@ -38,43 +29,172 @@ enum loader_cmd_type {
   LOADER_CMD_JUMP_ACK
 };
 
-static libusb_device_handle *devh = NULL;
+#ifdef _WIN32
+static usb_dev_handle *devh = NULL;
 
-static int dbg_usb_bulk_io(int ep, char *bytes, int size, int timeout) {
-    int actual_length;
-    int r;
-    void *ofunc = signal(SIGINT, SIG_IGN);
-    r = libusb_bulk_transfer(devh, ep & 0xff, (unsigned char*)bytes, size, &actual_length, timeout);
-    signal(SIGINT, ofunc);
-    if (r == 0) {
-        return 0;
+static int find_xmos_device(unsigned int id) {
+  struct usb_bus *bus;
+  struct usb_device *dev;
+  int found = 0;
+
+  for (bus = usb_get_busses(); bus; bus = bus->next) {
+    for (dev = bus->devices; dev; dev = dev->next) {
+      if (dev->descriptor.idVendor == XMOS_XTAG2_VID && dev->descriptor.idProduct == XMOS_XTAG2_PID) {
+        if (found == id) {
+          devh = usb_open(dev);
+          break;
+        }
+      }
     }
-    if (r == LIBUSB_ERROR_TIMEOUT) {
-        //printf("\n***** DEVICE ACCESS TIMEOUT *****\n");
-        return -2;
-    }
-    if (r == LIBUSB_ERROR_NO_DEVICE) {
-        return -1;
-    }
-    return  -3;
+  }
+
+  if (!devh)
+    return -1;
+  
+  return 0;
+}
+
+static int open_device() {
+  int r = 1;
+  
+  usb_init();
+  usb_find_busses(); /* find all busses */
+  usb_find_devices(); /* find all connected devices */
+
+  r = find_xmos_device(0);
+  if (r < 0) {
+    fprintf(stderr, "Could not find/open device\n");
+    return -1;
+  }
+ 
+  r = usb_set_configuration(devh, 1);
+  if (r < 0) {
+    fprintf(stderr, "Error setting config 1\n");
+    usb_close(devh);
+    return -1;
+  }
+
+  r = usb_claim_interface(devh, 0);
+  if (r < 0) {
+    fprintf(stderr, "Error claiming interface %d %d\n", 0, r);
+    return -1;
+  }
+
+  return 0;
+}
+
+static void reset_device() {
+  usb_reset(devh);
+}
+
+static int close_device() {
+  usb_release_interface(devh, 0);
+  usb_close(devh);
+  return 0;
 }
 
 int device_read(char *data, unsigned int length, unsigned int timeout) {
-    int result = 0;
-    result = dbg_usb_bulk_io(EP_IN, data, length, timeout);
-    return result;
+  int result = 0;
+  result = usb_bulk_read(devh, XMOS_XTAG2_EP_IN, data, length, timeout);
+  return result;
 }
 
 int device_write(char *data, unsigned int length, unsigned int timeout) {
-    int result = 0;
-    result = dbg_usb_bulk_io(EP_OUT, data, length, timeout);
-    return result;
+  int result = 0;
+  result = usb_bulk_write(devh, XMOS_XTAG2_EP_OUT, data, length, timeout);
+  return result;
 }
 
+#else 
+static libusb_device_handle *devh = NULL;
 
-/*
- * Implement the USB bootloader protocol.
- */
+static int find_xmos_device(unsigned int id) {
+  libusb_device *dev;
+  libusb_device **devs;
+  int i = 0;
+  int found = 0;
+  
+  libusb_get_device_list(NULL, &devs);
+
+  while ((dev = devs[i++]) != NULL) {
+    struct libusb_device_descriptor desc;
+    libusb_get_device_descriptor(dev, &desc); 
+    if (desc.idVendor == XMOS_XTAG2_VID && desc.idProduct == XMOS_XTAG2_PID) {
+      if (found == id) {
+        if (libusb_open(dev, &devh) < 0) {
+          return -1;
+        }
+        break;
+      }
+      found++;
+    }
+  }
+
+  libusb_free_device_list(devs, 1);
+
+  return devh ? 0 : -1;
+}
+
+static int open_device() {
+  int r = 1;
+
+  r = libusb_init(NULL);
+  if (r < 0) {
+    fprintf(stderr, "failed to initialise libusb\n");
+    return -1;
+  }
+
+  r = find_xmos_device(0);
+  if (r < 0) {
+    fprintf(stderr, "Could not find/open device\n");
+    return -1;
+  }
+
+  r = libusb_claim_interface(devh, 0);
+  if (r < 0) {
+    fprintf(stderr, "Error claiming interface %d %d\n", 0, r);
+    return -1;
+  }
+
+  return 0;
+}
+
+static void reset_device() {
+  libusb_reset_device(devh);
+}
+
+static int close_device() {
+  libusb_release_interface(devh, 0);
+  libusb_close(devh);
+  libusb_exit(NULL);
+  return 0;
+}
+
+static int device_io(int ep, char *bytes, int size, int timeout) {
+  int actual_length;
+  int r;
+  r = libusb_bulk_transfer(devh, ep & 0xff, (unsigned char*)bytes, size, &actual_length, timeout);
+
+  if (r == 0) {
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
+static int device_read(char *data, unsigned int length, unsigned int timeout) {
+  int result = 0;
+  result = device_io(XMOS_XTAG2_EP_IN, data, length, timeout);
+  return result;
+}
+
+static int device_write(char *data, unsigned int length, unsigned int timeout) {
+  int result = 0;
+  result = device_io(XMOS_XTAG2_EP_OUT, data, length, timeout);
+  return result;
+}
+#endif
+
 static void burnSerial() {
   unsigned int i = 0;
   unsigned int address = 0;
@@ -121,91 +241,22 @@ static void burnSerial() {
   device_read((char *)cmd_buf, 8, 1000);
 }
 
-
-
-static int find_device(unsigned int id, unsigned int open, char *new) {
-    libusb_device *dev;
-    libusb_device **devs;
-    int i = 0;
-    int found = 0;
-    char string[18];
-
-    libusb_get_device_list(NULL, &devs);
-
-    while ((dev = devs[i++]) != NULL) {
-        struct libusb_device_descriptor desc;
-        libusb_get_device_descriptor(dev, &desc);
-
-        if (desc.idVendor != 0x20B1 || desc.idProduct != 0xF7D1) {
-            continue;
-        }
-        if (!open) {
-          printf("%d - VID = 0x%x, PID = 0x%x, bcdDevice = 0x%x\n", found, desc.idVendor, desc.idProduct, desc.bcdDevice);
-        } else {
-            if (found == id) {
-              printf("PROGRAM %d - VID = 0x%x, PID = 0x%x, id = %d\n", found, desc.idVendor, desc.idProduct, id);
-                if (desc.bcdDevice & 0xff00) {
-                  printf("bcdDevice 0x%x\n", desc.bcdDevice);
-                    fprintf(stderr, "Device need to be unplugged and plugged back in\n");
-                    exit(1);
-                }
-                if (libusb_open(dev, &devh) < 0) {
-                    return -1;
-                }
-                libusb_get_string_descriptor_ascii(devh, desc.iSerialNumber, string, 17);
-                break;
-            }
-        }
-        found++;
-    }
-
-    libusb_free_device_list(devs, 1);
-
-    return devh ? 0 : -1;
-}
-
 int main(int argc, char **argv) {
-    int r = 1;
-    int id = 0;
-    int list = 0;
-    char *startAddr = (char*)&burnData[sizeof(burnData)/sizeof(int) - 9];
-    int i;
-    if (argc == 2 && strcmp(argv[1], "-l") == 0) {
-        list = 1;
-    }
-    if (argc == 3 && strcmp(argv[1], "-id") == 0) {
-      id = atoi(argv[2]);
-    }
-    r = libusb_init(NULL);
-    if (r < 0) {
-        fprintf(stderr, "failed to initialise libusb\n");
-        return -1;
-    }
+  int i = 0;
+  int j = 0;
 
 
-    if (list) {
-        find_device(0,0,"");
-    } else {
-      printf("looking for device id %d\n", id);
-        if (find_device(id,1, startAddr) < 0) {
-            fprintf(stderr, "Device not found\n", r);
-            return -1;
-        }
+  if (open_device() < 0) {
+    return 1;
+  }
 
-        r = libusb_claim_interface(devh, 0);
-        if (r < 0) {
-            fprintf(stderr, "usb_claim_interface error %d\n", r);
-            return -1;
-        }
-        printf("Loading USB Aud \n");
-        burnSerial();
-        sleep(1);
-        printf("Load done...\n");
-        libusb_reset_device(devh);
-        libusb_close(devh);
-    }
+  burnSerial();
 
-    libusb_exit(NULL);
+  reset_device();
 
-    return 0;
+  if (close_device() < 0) {
+    return 1;
+  }
+
+  return 0;
 }

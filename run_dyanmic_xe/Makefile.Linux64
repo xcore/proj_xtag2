@@ -1,0 +1,8 @@
+LIBUSB = ../../xmos_libusb_binaries/libusb/Linux64
+
+all: runDynamic
+
+runDynamic: runDynamic.c
+	gcc -o runDynamic runDynamic.c -I$(LIBUSB) -L$(LIBUSB) -lusb-1.0 -lpthread -lrt
+
+

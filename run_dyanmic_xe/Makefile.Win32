@@ -1,8 +1,8 @@
-LIBUSB = ../../xmos_libusb_binaries/libusb/Mac
+LIBUSB = ..\..\xmos_libusb_binaries\libusb\PC
 
 all: runDynamic
 
 runDynamic: runDynamic.c
-	gcc -o runDynamic runDynamic.c -L$(LIBUSB) -I$(LIBUSB) -m32 -lusb-1.0
+	cl runDynamic.c -I$(LIBUSB) $(LIBUSB)\libusb.lib
 
 

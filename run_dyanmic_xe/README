@@ -6,12 +6,26 @@ The app_l1_hid.h header is the code from the XMOS HID USB Example library with t
 only change to map the USB phy reset pin correctly for the XTAG2. On loading, it moves
 the mouse cursor around a 40 pixel square.
 
-To run this, build the binary, connect an XTAG2 then call:
+To build the binary,
+
+Linux 32
+    make -f Makefile.Linux32
+
+Linux 64
+    make -f Makefile.Linux64
+
+OSX
+    make -f Makefile.OSX
+
+Windows
+    nmake -f Makefile.Win32 
+
+To run the binary, connect an XTAG2 then call:
 ./runDynamic
 
 Do not use xrun or xgdb prior to calling this as once the JTAG firmware has been loaded
 this example cannot be loaded over the top. Disconnecting and reconnecting the XTAG2 will
-clear the memory.
+clear the memory. This will be reported as an error on the command line.
 
 More details will shortly be available in an application note.
 

@@ -39,7 +39,14 @@ static int find_xmos_device(unsigned int id) {
 
   for (bus = usb_get_busses(); bus; bus = bus->next) {
     for (dev = bus->devices; dev; dev = dev->next) {
-      if (dev->descriptor.idVendor == XMOS_XTAG2_VID && dev->descriptor.idProduct == XMOS_XTAG2_PID) {
+      if ((dev->descriptor.idVendor == XMOS_XTAG2_VID) && 
+          (dev->descriptor.idProduct == XMOS_XTAG2_PID)) {
+
+        if (dev->descriptor.bcdDevice & 0xff00) {
+          fprintf(stderr, "Device is not running USB loader, please reboot ...\n");
+          return -1;
+        }
+
         if (found == id) {
           devh = usb_open(dev);
           break;
@@ -119,7 +126,14 @@ static int find_xmos_device(unsigned int id) {
   while ((dev = devs[i++]) != NULL) {
     struct libusb_device_descriptor desc;
     libusb_get_device_descriptor(dev, &desc); 
-    if (desc.idVendor == XMOS_XTAG2_VID && desc.idProduct == XMOS_XTAG2_PID) {
+    if ((desc.idVendor == XMOS_XTAG2_VID) && 
+        (desc.idProduct == XMOS_XTAG2_PID)) {
+
+      if (desc.bcdDevice & 0xff00) {
+        fprintf(stderr, "Device is not running USB loader, please reboot ...\n");
+        return -1;
+      }
+
       if (found == id) {
         if (libusb_open(dev, &devh) < 0) {
           return -1;
@@ -195,7 +209,7 @@ static int device_write(char *data, unsigned int length, unsigned int timeout) {
 }
 #endif
 
-static void burnSerial() {
+static void loadFirmware() {
   unsigned int i = 0;
   unsigned int address = 0;
   unsigned int num_blocks = 0;
@@ -250,7 +264,7 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  burnSerial();
+  loadFirmware();
 
   reset_device();
 

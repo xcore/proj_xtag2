@@ -91,6 +91,12 @@ unsigned int do_xlink_reset(unsigned int reset_cmd, chanend reset) {
       tmr when timerafter(s + 1000) :> void;
       // Clear input buffer once caps have discharged
       progSwitchRegBlind(0x82, 0x8000, XLINK_VAL | 0x800000);
+
+/*
+      progSwitchRegBlind(0x82, 0x8000, 00000);
+      tmr when timerafter(s + 1000) :> void;
+      progSwitchRegBlind(0x82, 0x8000, XLINK_VAL );
+*/
       device_reset_flag = 1;
       break;
     case 1:

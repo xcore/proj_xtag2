@@ -2,7 +2,7 @@
 <?fileVersion 4.0.0?>
 <cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
     <storageModule moduleId="org.eclipse.cdt.core.settings">
-                      <cconfiguration id="com.xmos.cdt.toolchain.70770780">
+        <cconfiguration id="com.xmos.cdt.toolchain.70770780">
             <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.xmos.cdt.toolchain.70770780" moduleId="org.eclipse.cdt.core.settings" name="Default">
                 <externalSettings />
                 <extensions>
@@ -14,168 +14,168 @@
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 <configuration buildProperties="" description="" id="com.xmos.cdt.toolchain.70770780" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
                     <folderInfo id="com.xmos.cdt.toolchain.70770780.1127281840" name="/" resourcePath="">
-                        <toolChain id = "com.xmos.cdt.toolchain.99232018" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
-                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id = "com.xmos.cdt.core.platform.40162193" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
-                            <builder arguments="" id = "com.xmos.cdt.builder.base.64705513" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base" />
-                            <tool id = "com.xmos.cdt.xc.compiler.86169300" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
-                                <option id = "com.xmos.c.compiler.option.include.paths.87600762" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
+                        <toolChain id="com.xmos.cdt.toolchain.99232018" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
+                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id="com.xmos.cdt.core.platform.40162193" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
+                            <builder arguments="" id="com.xmos.cdt.builder.base.64705513" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base" />
+                            <tool id="com.xmos.cdt.xc.compiler.86169300" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
+                                <option id="com.xmos.c.compiler.option.include.paths.87600762" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
-                                <inputType id = "com.xmos.cdt.xc.compiler.input.41720599" name="XC Sources" superClass="com.xmos.cdt.xc.compiler.input" />
-                                <option id = "gnu.c.compiler.option.include.paths.31212426" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
+                                <inputType id="com.xmos.cdt.xc.compiler.input.41720599" name="XC Sources" superClass="com.xmos.cdt.xc.compiler.input" />
+                                <option id="gnu.c.compiler.option.include.paths.31212426" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
                             </tool>
-                            <tool id = "com.xmos.cdt.xc.compiler.base.85486462" name="com.xmos.cdt.xc.compiler.base" superClass="com.xmos.cdt.xc.compiler.base">
-                                <option id = "gnu.c.compiler.option.include.paths.8177477" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
+                            <tool id="com.xmos.cdt.xc.compiler.base.85486462" name="com.xmos.cdt.xc.compiler.base" superClass="com.xmos.cdt.xc.compiler.base">
+                                <option id="gnu.c.compiler.option.include.paths.8177477" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
-                                <option id = "com.xmos.c.compiler.option.include.paths.37218189" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
+                                <option id="com.xmos.c.compiler.option.include.paths.37218189" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
-                                </option>
-                            </tool>
-                            <tool id = "com.xmos.cdt.c.compiler.base.96532622" name="com.xmos.cdt.c.compiler.base" superClass="com.xmos.cdt.c.compiler.base">
-                                <option id = "gnu.c.compiler.option.include.paths.73810321" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
-                                </option>
-                                <option id = "com.xmos.c.compiler.option.include.paths.81172573" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
                             </tool>
-                            <tool id = "com.xmos.cdt.cpp.compiler.base.70680346" name="com.xmos.cdt.cpp.compiler.base" superClass="com.xmos.cdt.cpp.compiler.base">
-                                <option id = "gnu.c.compiler.option.include.paths.19466262" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
+                            <tool id="com.xmos.cdt.c.compiler.base.96532622" name="com.xmos.cdt.c.compiler.base" superClass="com.xmos.cdt.c.compiler.base">
+                                <option id="gnu.c.compiler.option.include.paths.73810321" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
-                                <option id = "com.xmos.c.compiler.option.include.paths.33373283" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
+                                <option id="com.xmos.c.compiler.option.include.paths.81172573" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
                             </tool>
-                            <tool id = "com.xmos.cdt.core.assembler.base.75702007" name="com.xmos.cdt.core.assembler.base" superClass="com.xmos.cdt.core.assembler.base">
-                                <option id = "gnu.c.compiler.option.include.paths.48666067" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
+                            <tool id="com.xmos.cdt.cpp.compiler.base.70680346" name="com.xmos.cdt.cpp.compiler.base" superClass="com.xmos.cdt.cpp.compiler.base">
+                                <option id="gnu.c.compiler.option.include.paths.19466262" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
-                                <option id = "com.xmos.c.compiler.option.include.paths.3619003" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
+                                <option id="com.xmos.c.compiler.option.include.paths.33373283" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
-
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
+                                </option>
+                            </tool>
+                            <tool id="com.xmos.cdt.core.assembler.base.75702007" name="com.xmos.cdt.core.assembler.base" superClass="com.xmos.cdt.core.assembler.base">
+                                <option id="gnu.c.compiler.option.include.paths.48666067" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
+                                </option>
+                                <option id="com.xmos.c.compiler.option.include.paths.3619003" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/gcc&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/include}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_xud/module_xud/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_usb_shared/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_xcore_debug/src}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_jtag/module_jtag_master}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/sc_usb/module_xud/include}&quot;' />
                                 </option>
                             </tool>
                         </toolChain>
@@ -269,9 +269,8 @@
             <storageModule moduleId="org.eclipse.cdt.core.language.mapping" />
             <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings" />
         </cconfiguration>
-
     </storageModule>
     <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-        <project id = "proj_xtag2.null.21865157" name="proj_xtag2" />
+        <project id="proj_xtag2.null.21865157" name="proj_xtag2" />
     </storageModule>
 </cproject>

@@ -40,7 +40,7 @@
   0x20,                              /* 9  idVendor */ \
   0xd1,                              /* 10 idProduct */ \
   0xf7,                              /* 11 idProduct */ \
-  0x03,                              /* 12 bcdDevice : Device release number */ \
+  0x04,                              /* 12 bcdDevice : Device release number */ \
   0x10,                              /* 13 bcdDevice : Device release number */ \
   0x01,                              /* 14 iManufacturer : Index of manufacturer string */ \
   0x02,                              /* 15 iProduct : Index of product string descriptor */ \

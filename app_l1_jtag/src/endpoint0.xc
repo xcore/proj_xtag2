@@ -310,6 +310,7 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
             }
         } /* if XUD_DoEnumReqs() */
 
+        /* If retVal is stil one we still haven't handles the request - stall EP0 */
         if(retVal == 1)
         {
             /* We did not handle the request - protocol stall */

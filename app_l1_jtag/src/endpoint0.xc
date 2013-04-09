@@ -252,13 +252,13 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                         retVal = XUD_DoSetRequestStatus(ep0_in, 0);
                         break;
                         /* Get descriptor */ 
-                    case GET_DESCRIPTOR:
+                    ///case GET_DESCRIPTOR:
                         /* Inspect which descriptor require (high byte of wValue) */ 
-                        switch( sp.wValue & 0xff00 ) {
-                        default:
-                            XUD_Error( "Unknown descriptor request\n" );
-                            break;
-                        }
+                        //switch( sp.wValue & 0xff00 ) {
+                        //default:
+                         //   XUD_Error( "Unknown descriptor request\n" );
+                          //  break;
+                       // }
                         break;
                     }
                     break;

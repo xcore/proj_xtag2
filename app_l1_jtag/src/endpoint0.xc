@@ -233,10 +233,6 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
     /* TODO: Macro? */
     safememcpy(strDescs[0], strDesc_langIDs, sizeof(strDesc_langIDs));
  
-    /* Compute initial channel volume factors */ 
-    //updateMasterVol(0xa);
-    //updateMasterVol(0xb);
-    
     while(1)
     {
         /* Do standard enumeration requests */ 
@@ -259,11 +255,6 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                     case GET_DESCRIPTOR:
                         /* Inspect which descriptor require (high byte of wValue) */ 
                         switch( sp.wValue & 0xff00 ) {
-                            /* HID Report Descriptor */
-                        ///case  WVALUE_GETDESC_HID_REPORT:
-                            /* Go Get Request protocol */
-                           // retVal = XUD_DoGetRequest( ep0_out, ep0_in, hidReportDesc, sizeof( hidReportDesc ));
-                            //break;
                         default:
                             XUD_Error( "Unknown descriptor request\n" );
                             break;

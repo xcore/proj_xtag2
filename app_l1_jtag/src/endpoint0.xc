@@ -233,10 +233,6 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
     /* TODO: Macro? */
     safememcpy(strDescs[0], strDesc_langIDs, sizeof(strDesc_langIDs));
  
-    /* Compute initial channel volume factors */ 
-    //updateMasterVol(0xa);
-    //updateMasterVol(0xb);
-    
     while(1)
     {
         /* Do standard enumeration requests */ 
@@ -256,18 +252,13 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                         retVal = XUD_DoSetRequestStatus(ep0_in, 0);
                         break;
                         /* Get descriptor */ 
-                    case GET_DESCRIPTOR:
+                    ///case GET_DESCRIPTOR:
                         /* Inspect which descriptor require (high byte of wValue) */ 
-                        switch( sp.wValue & 0xff00 ) {
-                            /* HID Report Descriptor */
-                        ///case  WVALUE_GETDESC_HID_REPORT:
-                            /* Go Get Request protocol */
-                           // retVal = XUD_DoGetRequest( ep0_out, ep0_in, hidReportDesc, sizeof( hidReportDesc ));
-                            //break;
-                        default:
-                            XUD_Error( "Unknown descriptor request\n" );
-                            break;
-                        }
+                        //switch( sp.wValue & 0xff00 ) {
+                        //default:
+                         //   XUD_Error( "Unknown descriptor request\n" );
+                          //  break;
+                       // }
                         break;
                     }
                     break;
@@ -303,7 +294,7 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                         XUD_SetDevAddr(sp.wValue);
                         break;
                     default:
-                        XUD_Error("Unknown device request");
+                        //XUD_Error("Unknown device request");
                         break;
                     }  
                     break;
@@ -318,7 +309,15 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                 break;
             }
         } /* if XUD_DoEnumReqs() */
-        if (retVal < 0) {
+
+        /* If retVal is stil one we still haven't handles the request - stall EP0 */
+        if(retVal == 1)
+        {
+            /* We did not handle the request - protocol stall */
+            XUD_SetStall_Out(0);
+            XUD_SetStall_In(0);
+        }
+        else if (retVal < 0) {
             XUD_ResetEndpoint(ep0_in, ep0_out);
         }
   }

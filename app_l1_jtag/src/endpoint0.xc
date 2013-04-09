@@ -316,7 +316,7 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
             XUD_SetStall_Out(0);
             XUD_SetStall_In(0);
         }
-        if (retVal < 0) {
+        else if (retVal < 0) {
             XUD_ResetEndpoint(ep0_in, ep0_out);
         }
   }

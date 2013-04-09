@@ -283,7 +283,7 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                                    break;
 
                                default:
-                                   XUD_Error("Unknown device request");
+                                   //XUD_Error("Unknown device request");
                                    break;
 
                            }
@@ -291,7 +291,7 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
 
                         default: 
                             /* Got a request to a recipient we didn't recognise... */ 
-                            XUD_Error("Unknown Recipient"); 
+                            //XUD_Error("Unknown Recipient"); 
                             break;
                     }
                     break;

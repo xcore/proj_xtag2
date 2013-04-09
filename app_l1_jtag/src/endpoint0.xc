@@ -294,7 +294,7 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                         XUD_SetDevAddr(sp.wValue);
                         break;
                     default:
-                        XUD_Error("Unknown device request");
+                        //XUD_Error("Unknown device request");
                         break;
                     }  
                     break;

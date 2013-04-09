@@ -163,14 +163,8 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
     while(1)
     {
         /* Do standard enumeration requests */ 
-        int retVal = 0;
-        retVal = DescriptorRequests(ep0_out, ep0_in, devDesc, sizeof(devDesc), cfgDesc, sizeof(cfgDesc), devQualDesc, sizeof(devQualDesc), oSpeedCfgDesc, sizeof(oSpeedCfgDesc), strDescs, sp);
-        if (retVal == -1) 
-        {
-            XUD_ResetEndpoint(ep0_out, ep0_in);
-           share_serial_number(strDescs[3][0], 17);
-           return;
-        }
+        int retVal = DescriptorRequests(ep0_out, ep0_in, devDesc, sizeof(devDesc), cfgDesc, sizeof(cfgDesc), devQualDesc, sizeof(devQualDesc), oSpeedCfgDesc, sizeof(oSpeedCfgDesc), strDescs, sp);
+        
         if (retVal == 1)
         {
             /* Request not covered by XUD_DoEnumReqs() so decode ourselves */
@@ -190,18 +184,18 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                                     /* TODO: Set the interface */
 
                                     /* No data stage for this request, just do data stage */
-                                    XUD_DoSetRequestStatus(ep0_in, 0);
+                                    retVal = XUD_DoSetRequestStatus(ep0_in, 0);
                                     break;
            
                                 case GET_INTERFACE:
                                     buffer[0] = 0;
-                                    XUD_DoGetRequest(ep0_out, ep0_in, buffer, 1, sp.wLength);
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, buffer, 1, sp.wLength);
                                     break;
 
                                 case GET_STATUS:
                                     buffer[0] = 0;
                                     buffer[1] = 0;
-                                    XUD_DoGetRequest(ep0_out, ep0_in, buffer, 2, sp.wLength);
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, buffer, 2, sp.wLength);
                                     break; 
             
                             }
@@ -221,12 +215,12 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                                     current_config = sp.wValue;
                                      
                                     /* No data stage for this request, just do status stage */
-                                    XUD_DoSetRequestStatus(ep0_in,  0);
+                                    retVal = XUD_DoSetRequestStatus(ep0_in,  0);
                                     break;
 
                                 case GET_CONFIGURATION:
                                     buffer[0] = (char)current_config;
-                                    XUD_DoGetRequest(ep0_out, ep0_in, buffer, 1, sp.wLength);
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, buffer, 1, sp.wLength);
                                     break; 
 
                                 case GET_STATUS:
@@ -234,7 +228,7 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                                     buffer[1] = 0;
                                     if (cfgDesc[7] & 0x40)
                                       buffer[0] = 0x1;
-                                    XUD_DoGetRequest(ep0_out, ep0_in, buffer, 2, sp.wLength);
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, buffer, 2, sp.wLength);
                                     break; 
                             case SET_ADDRESS:
                                 /* Status stage: Send a zero length packet */
@@ -267,19 +261,19 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
                                    buffer[1] = 0;
                                    if (halted)
                                      buffer[0] = 0x1;
-                                   XUD_DoGetRequest(ep0_out, ep0_in, buffer, 2, sp.wLength);
+                                   retVal = XUD_DoGetRequest(ep0_out, ep0_in, buffer, 2, sp.wLength);
                                    break;
                                case SET_FEATURE:
                                    if (sp.wValue == 0) { // HALT
                                      halted = 1;
                                    }
-                                   XUD_DoSetRequestStatus(ep0_in,  0);
+                                   retVal = XUD_DoSetRequestStatus(ep0_in,  0);
                                    break;
                                case CLEAR_FEATURE:
                                    if (sp.wValue == 0) { // HALT
                                      halted = 0;
                                    }
-                                   XUD_DoSetRequestStatus(ep0_in,  0);
+                                   retVal = XUD_DoSetRequestStatus(ep0_in,  0);
                                    break;
 
                                default:
@@ -307,5 +301,21 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in)
         }
 
         } /* if XUD_DoEnumReqs() */
-  }
+        
+        /* If retVal STILL 1 then STALL */
+        if (retVal == 1)
+        {
+            XUD_SetStall_Out(0);
+            XUD_SetStall_In(0);
+        }
+
+        if (retVal == -1) 
+        {
+           XUD_ResetEndpoint(ep0_out, ep0_in);
+           share_serial_number(strDescs[3][0], 17);
+           return;
+        }
+
+
+    } // while(1)
 }
